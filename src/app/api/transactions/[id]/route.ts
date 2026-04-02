@@ -7,7 +7,7 @@ export async function GET(
   { params }: { params: Promise<{ id: string }> }
 ) {
   try {
-    const session = await withAuth(request);
+    const session = await withAuth();
 
     const { id } = await params;
     const transaction = await prisma.transaction.findFirst({
@@ -39,7 +39,7 @@ export async function PUT(
   { params }: { params: Promise<{ id: string }> }
 ) {
   try {
-    const session = await withAuth(request);
+    const session = await withAuth();
 
     const { id } = await params;
     const body = await request.json();
@@ -86,7 +86,7 @@ export async function DELETE(
   { params }: { params: Promise<{ id: string }> }
 ) {
   try {
-    const session = await withAuth(request);
+    const session = await withAuth();
 
     const { id } = await params;
 

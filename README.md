@@ -1,69 +1,71 @@
-# 记账本 (JiZhang App)
+# JiZhang App (记账本)
 
-一个基于 Next.js 16 的现代化个人记账应用，支持用户认证、收支记录、类别管理和数据可视化。
+> [中文版本](README.zh.md)
 
-## ✨ 功能特性
+A modern personal finance management application built with Next.js 16, featuring user authentication, transaction tracking, category management, and data visualization.
 
-- 🔐 **用户认证** - 注册/登录，基于 NextAuth.js v5
-- 💰 **记账功能** - 记录收入和支出
-- 📊 **分类管理** - 自定义收支类别
-- 📈 **数据统计** - 图表展示收支趋势和分类占比
-- 🎨 **美观 UI** - 基于 Tailwind CSS 和 shadcn/ui 组件
-- 📱 **响应式设计** - 支持桌面和移动端
+## ✨ Features
 
-## 🛠 技术栈
+- 🔐 **User Authentication** - Register/Login with NextAuth.js v5
+- 💰 **Transaction Tracking** - Record income and expenses
+- 📊 **Category Management** - Custom income/expense categories
+- 📈 **Data Visualization** - Charts showing trends and category breakdowns
+- 🎨 **Modern UI** - Tailwind CSS and shadcn/ui components
+- 📱 **Responsive Design** - Desktop and mobile support
 
-- **框架**: Next.js 16 (App Router)
-- **语言**: TypeScript
-- **认证**: NextAuth.js v5 (Credentials Provider)
-- **数据库**: SQLite + Prisma ORM 7
-- **图表**: Recharts
-- **UI**: Tailwind CSS v4 + 自定义组件
-- **图标**: Lucide React
+## 🛠 Tech Stack
 
-## 📦 项目结构
+- **Framework**: Next.js 16 (App Router)
+- **Language**: TypeScript
+- **Auth**: NextAuth.js v5 (Credentials Provider)
+- **Database**: SQLite + Prisma ORM 7
+- **Charts**: Recharts
+- **UI**: Tailwind CSS v4 + Custom Components
+- **Icons**: Lucide React
+
+## 📦 Project Structure
 
 ```
 jizhang-app/
 ├── prisma/
-│   ├── schema.prisma          # 数据库模型定义
-│   ├── seed.ts                # 数据库种子脚本
-│   └── dev.db                 # SQLite 数据库文件
+│   ├── schema.prisma          # Database schema definitions
+│   ├── seed.ts                # Database seeding script
+│   └── dev.db                 # SQLite database file
 ├── src/
 │   ├── app/
 │   │   ├── api/
 │   │   │   ├── auth/          # NextAuth API
-│   │   │   ├── transactions/  # 交易 CRUD API
-│   │   │   ├── categories/    # 类别 CRUD API
-│   │   │   └── stats/         # 统计数据 API
-│   │   ├── (dashboard)/       # 仪表盘页面（需要登录）
-│   │   ├── login/             # 登录/注册页面
-│   │   ├── transactions/      # 交易管理页面
-│   │   ├── categories/        # 类别管理页面
-│   │   └── stats/             # 统计图表页面
+│   │   │   ├── transactions/  # Transaction CRUD API
+│   │   │   ├── categories/    # Category CRUD API
+│   │   │   └── stats/         # Statistics API
+│   │   ├── (dashboard)/       # Protected dashboard pages
+│   │   ├── login/             # Login/Register page
+│   │   ├── transactions/      # Transaction management
+│   │   ├── categories/        # Category management
+│   │   └── stats/             # Statistics charts
 │   ├── components/
-│   │   ├── ui/                # 基础 UI 组件
-│   │   └── providers/         # React Providers
+│   │   ├── ui/                # Base UI components
+│   │   └── providers/         # React Context providers
 │   └── lib/
-│       ├── prisma.ts          # Prisma 客户端
-│       ├── auth.ts            # 认证配置
-│       └── utils.ts           # 工具函数
-├── .env                       # 环境变量
+│       ├── prisma.ts          # Prisma client
+│       ├── auth.ts            # Auth configuration
+│       └── utils.ts           # Utility functions
+├── .env                       # Environment variables
 ├── package.json
 └── README.md
 ```
 
-## 🚀 快速开始
+## 🚀 Quick Start
 
-### 1. 安装依赖
+### 1. Install Dependencies
 
 ```bash
 npm install
 ```
 
-### 2. 配置环境变量
+### 2. Configure Environment Variables
 
-编辑 `.env` 文件：
+Edit `.env`:
 
 ```env
 DATABASE_URL="file:./dev.db"
@@ -71,126 +73,126 @@ AUTH_SECRET="your-secret-key-change-in-production"
 AUTH_URL="http://localhost:3000"
 ```
 
-> ⚠️ 生产环境请修改 `AUTH_SECRET` 为随机生成的安全字符串
+> ⚠️ In production, change `AUTH_SECRET` to a secure random string
 
-### 3. 初始化数据库
+### 3. Initialize Database
 
 ```bash
-# 推送数据库 schema
+# Push schema to database
 npx prisma db push
 
-# 生成 Prisma 客户端
+# Generate Prisma client
 npx prisma generate
 
-# 运行种子脚本（创建演示用户和默认类别）
+# Seed database with demo user and default categories
 npm run db:seed
 ```
 
-### 4. 启动开发服务器
+### 4. Start Development Server
 
 ```bash
 npm run dev
 ```
 
-访问 http://localhost:3000
+Visit http://localhost:3000
 
-## 👤 演示账户
+## 👤 Demo Account
 
-种子脚本会创建一个演示账户：
+The seed script creates a demo account:
 
-- **邮箱**: demo@example.com
-- **密码**: demo123
+- **Email**: demo@example.com
+- **Password**: demo123
 
-## 📱 页面说明
+## 📱 Pages
 
-### 登录/注册页 (`/login`)
-- 支持邮箱密码登录
-- 新用户可直接注册
+### Login/Register (`/login`)
+- Email/password login
+- New users can register
 
-### 仪表盘 (`/dashboard`)
-- 本月总收入/支出/结余
-- 每日收支趋势图（折线图）
-- 支出分类占比（饼图）
+### Dashboard (`/dashboard`)
+- Monthly income/expenses/balance
+- Daily transaction trends (line chart)
+- Expense category breakdown (pie chart)
 
-### 交易记录 (`/transactions`)
-- 查看所有收支记录
-- 按收入/支出筛选
-- 编辑/删除交易
-- 添加新交易
+### Transactions (`/transactions`)
+- View all transactions
+- Filter by income/expense
+- Edit/delete transactions
+- Add new transactions
 
-### 类别管理 (`/categories`)
-- 查看支出/收入类别
-- 添加自定义类别
-- 删除未使用的类别
+### Categories (`/categories`)
+- View income/expense categories
+- Add custom categories
+- Delete unused categories
 
-### 统计图表 (`/stats`)
-- 详细的收支趋势分析
-- 分类占比可视化
-- 每日收支对比（柱状图）
+### Statistics (`/stats`)
+- Detailed income/expense analysis
+- Category breakdown visualization
+- Daily comparison (bar chart)
 
-## 🔧 开发命令
+## 🔧 Development Commands
 
 ```bash
-# 启动开发服务器
+# Start development server
 npm run dev
 
-# 构建生产版本
+# Build for production
 npm run build
 
-# 启动生产服务器
+# Start production server
 npm start
 
-# 运行 ESLint
+# Run ESLint
 npm run lint
 
-# 数据库操作
-npm run db:migrate    # 创建并应用迁移
-npm run db:seed       # 运行种子脚本
-npm run db:studio     # 打开 Prisma Studio
+# Database commands
+npm run db:migrate    # Create and apply migrations
+npm run db:seed       # Run seed script
+npm run db:studio     # Open Prisma Studio
 ```
 
-## 📊 数据库模型
+## 📊 Database Schema
 
-### User (用户)
+### User
 - id, email, name, password
 - createdAt, updatedAt
 
-### Category (类别)
+### Category
 - id, name, type (INCOME/EXPENSE)
 - icon, color, userId
 - createdAt, updatedAt
 
-### Transaction (交易)
+### Transaction
 - id, amount, type (INCOME/EXPENSE)
 - categoryId, date, note, userId
 - createdAt, updatedAt
 
-## 🔒 安全说明
+## 🔒 Security Notes
 
-1. 生产环境务必修改 `AUTH_SECRET`
-2. 密码使用 bcrypt 加密存储
-3. 所有 API 都需要用户认证
-4. 用户只能访问自己的数据
+1. Change `AUTH_SECRET` in production
+2. Passwords are hashed with bcrypt
+3. All APIs require authentication
+4. Users can only access their own data
 
-## 📝 API 端点
+## 📝 API Endpoints
 
-| 端点 | 方法 | 描述 |
-|------|------|------|
-| `/api/auth/[...nextauth]` | POST | 认证端点 |
-| `/api/transactions` | GET, POST | 交易列表/创建 |
-| `/api/transactions/[id]` | GET, PUT, DELETE | 单个交易操作 |
-| `/api/categories` | GET, POST | 类别列表/创建 |
-| `/api/categories/[id]` | DELETE | 删除类别 |
-| `/api/stats` | GET | 统计数据 |
+| Endpoint | Method | Description |
+|----------|--------|-------------|
+| `/api/auth/[...nextauth]` | POST | Authentication |
+| `/api/transactions` | GET, POST | List/Create transactions |
+| `/api/transactions/[id]` | GET, PUT, DELETE | Single transaction operations |
+| `/api/categories` | GET, POST | List/Create categories |
+| `/api/categories/[id]` | DELETE | Delete category |
+| `/api/stats` | GET | Statistics |
 
-## 🎨 UI 组件
+## 🎨 UI Components
 
-项目包含以下自定义组件：
+Custom components included:
 - Button, Input, Label
 - Card, Table, Tabs
-- Form 相关组件
+- Form components
 
-所有组件使用 Tailwind CSS 样式，支持暗色模式。
+All components use Tailwind CSS and support dark mode.
 
 ## 📄 License
 
