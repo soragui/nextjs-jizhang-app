@@ -110,16 +110,17 @@ export default function LoginPage() {
           </form>
           <div className="mt-4 text-center text-sm">
             {isLogin ? "还没有账户？" : "已有账户？"}{" "}
-            <button
+            <Button
               type="button"
+              variant="link"
               onClick={() => {
                 setIsLogin(!isLogin);
                 setError("");
               }}
-              className="text-primary hover:underline"
+              className="h-auto p-0 text-primary hover:underline"
             >
               {isLogin ? "立即注册" : "立即登录"}
-            </button>
+            </Button>
           </div>
         </CardContent>
       </Card>
