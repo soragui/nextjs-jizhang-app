@@ -147,7 +147,7 @@ export default function CategoriesPage() {
           {loading ? (
             <div className="flex justify-center py-8"><div className="animate-spin rounded-full h-8 w-8 border-b-2 border-primary"></div></div>
           ) : expenseCategories.length === 0 ? (
-            <Card><CardContent className="py-8 text-center text-muted-foreground">暂无支出类别，点击上方"添加类别"创建</CardContent></Card>
+            <Card><CardContent className="py-8 text-center text-muted-foreground">暂无支出类别，点击上方&ldquo;添加类别&rdquo;创建</CardContent></Card>
           ) : (
             <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
               {expenseCategories.map((cat) => (
@@ -178,7 +178,7 @@ export default function CategoriesPage() {
           {loading ? (
             <div className="flex justify-center py-8"><div className="animate-spin rounded-full h-8 w-8 border-b-2 border-primary"></div></div>
           ) : incomeCategories.length === 0 ? (
-            <Card><CardContent className="py-8 text-center text-muted-foreground">暂无收入类别，点击上方"添加类别"创建</CardContent></Card>
+            <Card><CardContent className="py-8 text-center text-muted-foreground">暂无收入类别，点击上方&ldquo;添加类别&rdquo;创建</CardContent></Card>
           ) : (
             <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
               {incomeCategories.map((cat) => (

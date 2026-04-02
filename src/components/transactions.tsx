@@ -1,10 +1,10 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Card, CardHeader, CardTitle, CardContent } from "@/components/ui/card";
-import { Plus, Trash2, Edit } from "lucide-react";
+import { Trash2, Edit } from "lucide-react";
 
 interface Category {
   id: string;
@@ -140,7 +140,7 @@ interface TransactionListProps {
   onDelete: (id: string) => void;
 }
 
-export function TransactionList({ transactions, categories, onEdit, onDelete }: TransactionListProps) {
+export function TransactionList({ transactions, onEdit, onDelete }: Omit<TransactionListProps, "categories">) {
   if (transactions.length === 0) {
     return (
       <Card>

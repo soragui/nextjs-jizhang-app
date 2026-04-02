@@ -4,15 +4,15 @@ import { withAuth } from "@/lib/with-auth";
 
 export async function GET(request: NextRequest) {
   try {
-    const session = await withAuth(request);
+    const session = await withAuth();
 
-    const { searchParams } = new URL(request.url);
+    const searchParams = request.nextUrl.searchParams;
     const type = searchParams.get("type");
     const categoryId = searchParams.get("categoryId");
     const startDate = searchParams.get("startDate");
     const endDate = searchParams.get("endDate");
 
-    const where: any = {
+    const where: { userId: string; type?: string; categoryId?: string; date?: { gte?: Date; lte?: Date } } = {
       userId: session.user.id,
     };
 
@@ -54,7 +54,7 @@ export async function GET(request: NextRequest) {
 
 export async function POST(request: NextRequest) {
   try {
-    const session = await withAuth(request);
+    const session = await withAuth();
 
     const body = await request.json();
     const { amount, type, categoryId, date, note } = body;

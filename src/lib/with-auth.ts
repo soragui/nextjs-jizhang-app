@@ -8,13 +8,13 @@ import { Session } from "next-auth";
  * Throws a 401 Response if not.
  *
  * @example
- * export async function GET(request: NextRequest) {
- *   const session = await withAuth(request);
+ * export async function GET() {
+ *   const session = await withAuth();
  *   // session.user.id is guaranteed to exist
  *   ...
  * }
  */
-export async function withAuth(request: Request): Promise<Session & { user: { id: string } }> {
+export async function withAuth(): Promise<Session & { user: { id: string } }> {
   const session = await auth();
 
   if (!session?.user?.id) {

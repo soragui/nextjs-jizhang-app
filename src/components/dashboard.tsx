@@ -7,8 +7,18 @@ interface DashboardStats {
   totalIncome: number;
   totalExpense: number;
   balance: number;
-  recentTransactions: any[];
+  recentTransactions: Transaction[];
   categoryBreakdown: { name: string; amount: number; color?: string }[];
+}
+
+interface Transaction {
+  id: string;
+  type: "INCOME" | "EXPENSE";
+  amount: number;
+  date: string;
+  category?: {
+    name: string;
+  };
 }
 
 interface DashboardProps {
